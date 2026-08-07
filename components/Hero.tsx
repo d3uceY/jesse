@@ -83,16 +83,18 @@ export default function Hero() {
         );
 
       // Decorative parallax: the name lags as you scroll away from the hero.
-      gsap.to(".hero__name", {
-        yPercent: 24,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      if (hero) {
+        gsap.to(".hero__name", {
+          yPercent: 24,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
     },
     { scope }
   );

@@ -7,7 +7,10 @@ import { INTRO_OPEN_AT } from "@/lib/timing";
 
 gsap.registerPlugin(useGSAP);
 
-const bootLine = ">>> INITIALIZING INTERFACE";
+
+const arrayBootLines = ["FRYING AKARA", "LOADING JELLO", "BOOTING FRYER", "SPINNING UP", "WAKING UP", "STARTING UP", "INITIALIZING", "RUNNING SCRIPTS", "COMPILING CODE", "LOL, why did you refresh?"];
+const randomlyBootLine = arrayBootLines[Math.floor(Math.random() * arrayBootLines.length)];
+const bootLine = `>>> ${randomlyBootLine}`;
 
 /**
  * Full-screen intro curtain. Two ink panels cover the page at first; a boot

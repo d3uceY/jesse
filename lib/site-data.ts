@@ -3,7 +3,7 @@ export const registerStripItems = [
     "JULY 2026",
     "LAGOS · NIGERIA",
     { text: "JESSE", red: true },
-    "117 REPOSITORIES",
+    "2× AWESOME WAILS",
     "GITHUB.COM/D3UCEY",
     "X.COM/D3UC3Y",
     { text: "D3UCEY", red: true },
@@ -15,7 +15,7 @@ export const heroStats: {
     stat: string;
     small?: boolean;
 }[] = [
-        { label: ">>> Repositories", value: "117", stat: "PUBLIC · OPEN SOURCE" },
+        { label: ">>> Awesome Wails", value: "2", stat: "FEATURED PROJECTS" },
         {
             label: ">>> Location",
             value: "LAGOS",
@@ -33,35 +33,29 @@ export const heroStats: {
 export const manifestTheses = [
     {
         num: "01.",
-        headline: "Systems over spectacle",
-        body: "Clipboard managers. CLI alias systems. IoT regulators. Built from the constraint inward, not the chrome outward. Go for the skeleton, TypeScript for the skin, C++ where the metal matters.",
-        footnote: ">>> Wails · React · ESP32 · MQTT",
+        headline: "I fix what annoys me",
+        body: "Clipcat exists because the Windows clipboard is Ass Cheeks (forgive my language). Ya-CLI exists because my aliases lived on three machines and kept getting lost. OpenSus exists because...because it can. None of it started as a portfolio piece. It started as friction I wanted gone.",
+        footnote: ">>> CLIPCAT · YA-CLI · OPENSUS",
     },
     {
         num: "02.",
-        headline: "Ship the thing you need",
-        body: "Clipcat exists because the Windows clipboard is garbage. Ya-CLI exists because aliases scatter across machines. OpenSus exists because checking GitHub repo stats shouldn't take five tabs. Every project started with something that annoyed me enough to fix it.",
-        footnote: ">>> 6 FEATURED · 2 AWESOME-LISTED",
+        headline: "A few thousand downloads later",
+        body: "Avnac Studio is a design tool built with Go and Wails. Over a thousand people have it installed. Two of my projects sit on Awesome Wails, a curated list nobody bought their way onto.",
+        footnote: ">>> AVNAC STUDIO · AWESOME WAILS",
     },
     {
         num: "03.",
-        headline: "Desktop is not dead",
-        body: "Avnac Studio: a Canva alternative built with Wails and Go. Over a thousand downloads. Two projects on Awesome Wails. Native performance without the Electron bloat. The web wrapped in Go, not the other way around.",
-        footnote: ">>> AVNAC · CLIPCAT · YA-GUI",
-    },
-    {
-        num: "04.",
-        headline: "From silicon to socket",
-        body: "Water Pump Regulator: an ESP32 reading tank levels, driving relays, publishing telemetry over MQTT. Software engineering doesn't stop at the screen. It extends to the physical systems that keep our infrastructure running.",
-        footnote: ">>> ESP32 · MQTT · EMBEDDED C++",
+        headline: "Hardware that reports back",
+        body: "The Water Pump Regulator runs on an ESP32. It reads tank levels, drives relays, and publishes telemetry over MQTT, so a physical system reports its state without a cloud subscription. I could have just bought one but building stuff like this is fun.",
+        footnote: ">>> ESP32 · MQTT · C++",
     },
 ] as const;
 
 export const statsBar = [
-    { value: "117", label: "Repositories" },
-    { value: "44", label: "Followers" },
-    { value: "2", label: "Awesome Listed" },
+    { value: "2", label: "Awesome Wails" },
     { value: "1K+", label: "Downloads" },
+    { value: "100%", label: "Open Source" },
+    { value: "3", label: "Languages" },
 ] as const;
 
 export const projects: {
@@ -139,6 +133,6 @@ export const colophonItems: {
         { key: "Updated", value: "July 2026" },
         { key: "Engineer", value: "github.com/d3uceY", href: "https://github.com/d3uceY" },
         { key: "Contact", value: "x.com/d3uc3y", href: "https://x.com/d3uc3y" },
-        { key: "Location", value: "Arvist, Nigeria · GMT+1" },
+        { key: "Location", value: "Lagos, Nigeria · GMT+1" },
         { key: "License", value: "© 2026 Onyekwelu Jesse" },
     ];

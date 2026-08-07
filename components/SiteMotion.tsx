@@ -76,13 +76,12 @@ export default function SiteMotion({ children }: { children: React.ReactNode }) 
           });
 
           // 2) Numeric count-ups (hero stat + stats bar).
-          gsap.utils.toArray<HTMLElement>(".count-up").forEach((el) => {
-            ScrollTrigger.create({
-              trigger: el,
-              start: "top 92%",
-              once: true,
-              onEnter: () => countUpTo(el),
-            });
+          ScrollTrigger.batch(".count-up", {
+            start: "top 95%",
+            once: true,
+            onEnter: (batch) => {
+              batch.forEach((el) => countUpTo(el as HTMLElement));
+            },
           });
 
           // 3) SplitText masked reveals — split once fonts are ready.
