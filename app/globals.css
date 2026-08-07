@@ -825,6 +825,13 @@ body {
   object-fit: contain;
 }
 
+/* Mobile: no hover to trigger the pop-in, so the logo just sits in its corner. */
+@media (max-width: 767px) {
+  .project-card__logo {
+    opacity: 1;
+  }
+}
+
 /* System-status accents: available = ok-green, ongoing = amber. */
 .colophon__value.colophon__value--ok {
   color: var(--ok);

@@ -20,106 +20,116 @@ export default function Projects() {
 
   useGSAP(
     () => {
-      const preview = previewRef.current;
-      if (!preview || !scope.current) return;
+      if (!scope.current) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      const img = preview.querySelector<HTMLImageElement>("img");
-      const name = preview.querySelector<HTMLElement>(".cursor-preview__name");
-      const cards = Array.from(
-        scope.current.querySelectorAll<HTMLElement>("[data-preview], [data-logo]")
-      );
-      if (!img || !name || cards.length === 0) return;
+      // Hover interactions are desktop-only: on mobile there's no cursor to
+      // follow and no hover, so the logos are shown statically via CSS instead.
+      const mm = gsap.matchMedia();
 
-      const xTo = gsap.quickTo(preview, "x", { duration: 0.35, ease: "power3" });
-      const yTo = gsap.quickTo(preview, "y", { duration: 0.35, ease: "power3" });
+      mm.add("(min-width: 768px)", () => {
+        const preview = previewRef.current;
+        if (!preview) return;
 
-      const move = (e: MouseEvent) => {
-        xTo(e.clientX + 18);
-        yTo(e.clientY + 18);
-      };
+        const img = preview.querySelector<HTMLImageElement>("img");
+        const name = preview.querySelector<HTMLElement>(".cursor-preview__name");
+        const cards = Array.from(
+          scope.current!.querySelectorAll<HTMLElement>("[data-preview], [data-logo]")
+        );
+        if (!img || !name || cards.length === 0) return;
 
-      const cleanup: Array<{
-        card: HTMLElement;
-        onEnter: (e: MouseEvent) => void;
-        onMove: (e: MouseEvent) => void;
-        onLeave: () => void;
-      }> = [];
+        const xTo = gsap.quickTo(preview, "x", { duration: 0.35, ease: "power3" });
+        const yTo = gsap.quickTo(preview, "y", { duration: 0.35, ease: "power3" });
 
-      cards.forEach((card) => {
-        const logo = card.querySelector<HTMLElement>(".project-card__logo");
-        const src = card.dataset.preview;
-
-        // Park the logo fully below the card's bottom edge (hidden by overflow).
-        if (logo) {
-          gsap.set(logo, {
-            yPercent: 130,
-            rotation: -8,
-            scale: 0.7,
-            opacity: 1,
-            transformOrigin: "50% 100%",
-          });
-        }
-
-        const onEnter = (e: MouseEvent) => {
-          if (src) {
-            img.src = src;
-            name.textContent = card.dataset.name ?? "";
-            move(e);
-            gsap.to(preview, {
-              autoAlpha: 1,
-              scale: 1,
-              duration: 0.3,
-              ease: "power3.out",
-            });
-          }
-          if (logo) {
-            gsap.to(logo, {
-              yPercent: 0,
-              rotation: 0,
-              scale: 1,
-              duration: 0.65,
-              ease: "back.out(1.7)",
-            });
-          }
+        const move = (e: MouseEvent) => {
+          xTo(e.clientX + 18);
+          yTo(e.clientY + 18);
         };
-        const onLeave = () => {
-          if (src) {
-            gsap.to(preview, {
-              autoAlpha: 0,
-              scale: 0.85,
-              duration: 0.25,
-              ease: "power3.in",
-            });
-          }
+
+        const cleanup: Array<{
+          card: HTMLElement;
+          onEnter: (e: MouseEvent) => void;
+          onMove: (e: MouseEvent) => void;
+          onLeave: () => void;
+        }> = [];
+
+        cards.forEach((card) => {
+          const logo = card.querySelector<HTMLElement>(".project-card__logo");
+          const src = card.dataset.preview;
+
+          // Park the logo fully below the card's bottom edge (hidden by overflow).
           if (logo) {
-            gsap.to(logo, {
+            gsap.set(logo, {
               yPercent: 130,
               rotation: -8,
               scale: 0.7,
-              duration: 0.4,
-              ease: "power2.in",
+              opacity: 1,
+              transformOrigin: "50% 100%",
             });
           }
-        };
-        const onMove = (e: MouseEvent) => {
-          if (src) move(e);
-        };
 
-        card.addEventListener("mouseenter", onEnter);
-        card.addEventListener("mousemove", onMove);
-        card.addEventListener("mouseleave", onLeave);
-        cleanup.push({ card, onEnter, onMove, onLeave });
+          const onEnter = (e: MouseEvent) => {
+            if (src) {
+              img.src = src;
+              name.textContent = card.dataset.name ?? "";
+              move(e);
+              gsap.to(preview, {
+                autoAlpha: 1,
+                scale: 1,
+                duration: 0.3,
+                ease: "power3.out",
+              });
+            }
+            if (logo) {
+              gsap.to(logo, {
+                yPercent: 0,
+                rotation: 0,
+                scale: 1,
+                duration: 0.65,
+                ease: "back.out(1.7)",
+              });
+            }
+          };
+          const onLeave = () => {
+            if (src) {
+              gsap.to(preview, {
+                autoAlpha: 0,
+                scale: 0.85,
+                duration: 0.25,
+                ease: "power3.in",
+              });
+            }
+            if (logo) {
+              gsap.to(logo, {
+                yPercent: 130,
+                rotation: -8,
+                scale: 0.7,
+                duration: 0.4,
+                ease: "power2.in",
+              });
+            }
+          };
+          const onMove = (e: MouseEvent) => {
+            if (src) move(e);
+          };
+
+          card.addEventListener("mouseenter", onEnter);
+          card.addEventListener("mousemove", onMove);
+          card.addEventListener("mouseleave", onLeave);
+          cleanup.push({ card, onEnter, onMove, onLeave });
+        });
+
+        return () => {
+          cleanup.forEach(({ card, onEnter, onMove, onLeave }) => {
+            card.removeEventListener("mouseenter", onEnter);
+            card.removeEventListener("mousemove", onMove);
+            card.removeEventListener("mouseleave", onLeave);
+          });
+          gsap.killTweensOf(preview);
+        };
       });
 
-      return () => {
-        cleanup.forEach(({ card, onEnter, onMove, onLeave }) => {
-          card.removeEventListener("mouseenter", onEnter);
-          card.removeEventListener("mousemove", onMove);
-          card.removeEventListener("mouseleave", onLeave);
-        });
-        gsap.killTweensOf(preview);
-      };
+      return () => mm.revert();
     },
     { scope }
   );

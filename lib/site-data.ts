@@ -70,7 +70,7 @@ export const projects: {
 }[] = [
         {
             name: "Avnac Studio",
-            href: "https://github.com/striker561/Avnac-Studio",
+            href: "https://avnac.design/",
             image: "/app-images/avnac-studio-png.png",
             desc: "Lightweight desktop design tool. Think Canva but native. Built with Go and Wails. Over a thousand downloads.",
             tag: ">>> Go · Wails · TypeScript",
@@ -79,7 +79,7 @@ export const projects: {
         },
         {
             name: "Clipcat",
-            href: "https://github.com/d3uceY/Clipcat",
+            href: "https://getclipcat.com/",
             image: "/app-images/clipcat.png",
             logo: "/app-logos/clipcat-logo.ico",
             desc: "Cross-platform clipboard manager with a paper-like design. Windows clipboard, finally not terrible. Featured on Awesome Wails.",
