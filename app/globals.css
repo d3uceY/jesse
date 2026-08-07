@@ -655,6 +655,147 @@ body {
   border-color: var(--amber);
 }
 
+/* --- PROJECT SCREENSHOT PLATES --- */
+.project-card__shot {
+  margin-bottom: clamp(16px, 2vw, 22px);
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  transition: border-color 100ms ease;
+}
+
+.project-card__shot-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 10px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+  transition: background 100ms ease, border-color 100ms ease;
+}
+
+.project-card__shot-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.project-card__shot-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  transition: background 100ms ease, border-color 100ms ease;
+}
+
+.project-card__shot-dot--red {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.project-card__shot-name {
+  font-family: var(--micro);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  transition: color 100ms ease;
+}
+
+.project-card__shot-screen {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-card--featured .project-card__shot-screen {
+  aspect-ratio: 16 / 9;
+}
+
+.project-card__shot-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Invert the plate chrome with the card on hover. */
+.project-card:hover .project-card__shot,
+.project-card:focus-visible .project-card__shot {
+  border-color: var(--paper);
+}
+
+.project-card:hover .project-card__shot-bar,
+.project-card:focus-visible .project-card__shot-bar {
+  background: var(--ink);
+  border-bottom-color: var(--paper);
+}
+
+.project-card:hover .project-card__shot-name,
+.project-card:focus-visible .project-card__shot-name {
+  color: var(--paper);
+}
+
+.project-card:hover .project-card__shot-dot,
+.project-card:focus-visible .project-card__shot-dot {
+  background: var(--ink);
+  border-color: var(--paper);
+}
+
+.project-card:hover .project-card__shot-dot--red,
+.project-card:focus-visible .project-card__shot-dot--red {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+/* --- CURSOR-FOLLOWING PREVIEW --- */
+.cursor-preview {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 150;
+  width: clamp(200px, 24vw, 340px);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.85);
+  will-change: transform;
+}
+
+.cursor-preview__screen {
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cursor-preview__screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cursor-preview__name {
+  font-family: var(--micro);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-top: none;
+  padding: 4px 8px;
+  text-align: right;
+}
+
 /* System-status accents: available = ok-green, ongoing = amber. */
 .colophon__value.colophon__value--ok {
   color: var(--ok);
