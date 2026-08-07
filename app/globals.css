@@ -848,29 +848,33 @@ body {
 
 /* --- FOOTER FLAG --- */
 .footer-flag {
-  padding: 0 clamp(24px, 6vw, 80px) 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 16px;
+  padding: clamp(32px, 5vw, 64px) clamp(24px, 6vw, 80px) clamp(20px, 3vw, 40px);
+  container-type: inline-size;
 }
 
-.footer-flag__left {
+.footer-flag__meta {
   font-family: var(--micro);
   font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: clamp(16px, 2vw, 24px);
 }
 
-.footer-flag__right {
+/* Full-width monumental wordmark: 23cqw = ~23% of the footer's own width per
+   line, sized so the six characters of "D3UCEY" span nearly the whole footer. */
+.footer-flag__word {
+  display: block;
+  width: 100%;
   font-family: var(--display);
-  font-size: clamp(2rem, 6vw, 6rem);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.04em;
-  line-height: 0.88;
+  line-height: 0.8;
+  color: var(--ink);
+  font-size: 23cqw;
+  white-space: nowrap;
 }
 
 /* --- SELECTION --- */
