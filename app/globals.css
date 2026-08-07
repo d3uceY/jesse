@@ -796,6 +796,35 @@ body {
   text-align: right;
 }
 
+/* --- PROJECT LOGO (pops in from outside the card on hover) --- */
+/* Cards with a logo reserve a corner in their meta row so the pop-in logo
+   never covers the tags/badge. */
+.project-card[data-logo] .project-card__meta {
+  padding-right: clamp(56px, 6vw, 76px);
+}
+
+.project-card__logo {
+  position: absolute;
+  right: clamp(14px, 2vw, 22px);
+  bottom: clamp(12px, 2vw, 20px);
+  width: clamp(52px, 5vw, 64px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+  z-index: 2;
+}
+
+.project-card__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* System-status accents: available = ok-green, ongoing = amber. */
 .colophon__value.colophon__value--ok {
   color: var(--ok);

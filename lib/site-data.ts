@@ -62,6 +62,7 @@ export const projects: {
     name: string;
     href: string;
     image?: string;
+    logo?: string;
     desc: string;
     tag: string;
     badge: string;
@@ -80,6 +81,7 @@ export const projects: {
             name: "Clipcat",
             href: "https://github.com/d3uceY/Clipcat",
             image: "/app-images/clipcat.png",
+            logo: "/app-logos/clipcat-logo.ico",
             desc: "Cross-platform clipboard manager with a paper-like design. Windows clipboard, finally not terrible. Featured on Awesome Wails.",
             tag: ">>> Wails · React",
             badge: "AWESOME",
@@ -88,6 +90,7 @@ export const projects: {
             name: "Ya-GUI",
             href: "https://github.com/d3uceY/Ya-GUI",
             image: "/app-images/ya-gui.png",
+            logo: "/app-logos/ya-logo.png",
             desc: "GUI frontend for the Ya CLI alias tool. Browse, edit, and manage aliases without touching a config file. Featured on Awesome Wails.",
             tag: ">>> Wails · React · Go",
             badge: "AWESOME",
@@ -96,6 +99,7 @@ export const projects: {
             name: "Ya-CLI",
             href: "https://github.com/d3uceY/Ya-CLI",
             image: "/app-images/ya-cli.png",
+            logo: "/app-logos/ya-logo.png",
             desc: "Command shortcut and alias manager. Speed dial for your terminal.",
             tag: ">>> Go · CLI",
             badge: "16 ★",
@@ -104,6 +108,7 @@ export const projects: {
             name: "Cokpyt",
             href: "https://github.com/d3uceY/Cokpyt",
             image: "/app-images/cokpyt.png",
+            logo: "/app-logos/cokpyt-logo.png",
             desc: "The GUI you always wished pip shipped with. Browse, install, and manage Python packages without the terminal.",
             tag: ">>> Python · GUI",
             badge: "PIP WRAPPER",
@@ -111,6 +116,8 @@ export const projects: {
         {
             name: "OpenSus",
             href: "https://github.com/d3uceY/OpenSus",
+            image: "/app-images/opensus.png",
+            logo: "/app-logos/opensus-logo.png",
             desc: "Paste a GitHub URL. See the repo activity. Stars, forks, issues. All the signals. No tab sprawl.",
             tag: ">>> Web · GitHub API",
             badge: "REPO RADAR",
