@@ -1,4 +1,5 @@
 import SiteMotion from "@/components/SiteMotion";
+import IntroCurtain from "@/components/IntroCurtain";
 import RegisterStrip from "@/components/RegisterStrip";
 import Hero from "@/components/Hero";
 import Manifest from "@/components/Manifest";
@@ -11,6 +12,7 @@ import FooterFlag from "@/components/FooterFlag";
 export default function Home() {
   return (
     <SiteMotion>
+      <IntroCurtain />
       <RegisterStrip />
       <Hero />
 

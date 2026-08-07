@@ -2,9 +2,16 @@
   --paper: #f4f4f0;
   --ink: #050505;
   --red: #e61919;
+  --amber: #ff4d00;
+  --ok: #21a674;
   --display: var(--font-display), "Archivo Black", "Inter", sans-serif;
   --micro: var(--font-micro), "JetBrains Mono", monospace;
   --body: var(--font-body), "Inter", sans-serif;
+
+  /* Agency-standard easing curves (used by CSS-only micro-interactions) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 *,
@@ -17,7 +24,24 @@
 
 html {
   background: var(--ink);
-  scroll-behavior: smooth;
+}
+
+/* --- LENIS SMOOTH SCROLL --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
@@ -69,6 +93,19 @@ body {
   color: var(--red);
 }
 
+/* Thin red rule tracking page scroll progress under the sticky strip. */
+.register-strip__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--red);
+  transform-origin: left center;
+  z-index: 2;
+  pointer-events: none;
+}
+
 /* --- HERO --- */
 .hero {
   display: grid;
@@ -76,6 +113,7 @@ body {
   min-height: 100vh;
   padding: 0;
   position: relative;
+  overflow: hidden;
 }
 
 .hero__primary {
@@ -95,9 +133,113 @@ body {
   overflow: hidden;
 }
 
+.hero__ascii-char {
+  display: inline-block;
+}
+
+.hero__ascii-cursor {
+  display: inline-block;
+  color: var(--red);
+  margin-left: 2px;
+  animation: cursor-blink 1s steps(2, start) infinite;
+}
+
+/* Red scanline that sweeps the hero during the boot sequence. */
+.hero__scan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--red);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+@keyframes cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* --- INTRO CURTAIN --- */
+.intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.intro-curtain__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.1%;
+  background: var(--ink);
+  will-change: transform;
+}
+
+.intro-curtain__panel--top {
+  top: 0;
+}
+
+.intro-curtain__panel--bottom {
+  bottom: 0;
+}
+
+.intro-curtain__brand {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 24px);
+  text-align: center;
+}
+
+.intro-curtain__boot {
+  font-family: var(--micro);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+}
+
+.intro-curtain__boot-char {
+  display: inline-block;
+}
+
+.intro-curtain__cursor {
+  display: inline-block;
+  color: var(--red);
+  margin-left: 2px;
+  animation: cursor-blink 1s steps(2, start) infinite;
+}
+
+.intro-curtain__name {
+  display: block;
+  overflow: hidden;
+  font-family: var(--display);
+  font-size: clamp(4rem, 14vw, 14rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.intro-curtain__char {
+  display: inline-block;
+  will-change: transform;
+}
+
 .hero__name {
   font-family: var(--display);
-  font-size: clamp(4rem, 10vw, 15rem);
+  font-size: clamp(5rem, 14vw, 20rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.04em;
@@ -111,11 +253,12 @@ body {
   overflow: hidden;
 }
 
-.hero__name-line span {
-  display: block;
+.hero__char {
+  display: inline-block;
+  will-change: transform;
 }
 
-.hero__name-line--outline span {
+.hero__name-line--outline .hero__char {
   -webkit-text-fill-color: var(--paper);
   -webkit-text-stroke: clamp(2px, 0.4vw, 6px) var(--ink);
 }
@@ -294,6 +437,8 @@ body {
   text-decoration: none;
   color: var(--ink);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-card:hover,
@@ -432,6 +577,8 @@ body {
   color: var(--ink);
   transition: background 100ms ease, color 100ms ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .embedded-card:hover,
@@ -455,6 +602,67 @@ body {
 .embedded-card:hover .embedded-card__tag,
 .embedded-card:focus-visible .embedded-card__tag {
   color: var(--red);
+}
+
+/* --- CARD MICRO-INTERACTIONS: red light sweep + blinking block cursor --- */
+.project-card__scan,
+.embedded-card__scan {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(230, 25, 25, 0.12) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s var(--ease-out-expo);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card:hover .project-card__scan,
+.project-card:focus-visible .project-card__scan,
+.embedded-card:hover .embedded-card__scan,
+.embedded-card:focus-visible .embedded-card__scan {
+  transform: translateX(100%);
+}
+
+.project-card__cursor,
+.embedded-card__cursor {
+  font-family: var(--micro);
+  color: var(--red);
+  display: inline-block;
+  margin-right: 0.35em;
+  opacity: 0;
+}
+
+.project-card:hover .project-card__cursor,
+.project-card:focus-visible .project-card__cursor,
+.embedded-card:hover .embedded-card__cursor,
+.embedded-card:focus-visible .embedded-card__cursor {
+  opacity: 1;
+  animation: cursor-blink 1s steps(2, start) infinite;
+}
+
+/* Featured flagship card gets an amber crown + badge. */
+.project-card--featured {
+  border-top: 4px solid var(--amber);
+}
+
+.project-card--featured .project-card__badge {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+
+/* System-status accents: available = ok-green, ongoing = amber. */
+.colophon__value.colophon__value--ok {
+  color: var(--ok);
+}
+
+.embedded-card__status.embedded-card__status--amber {
+  color: var(--amber);
+  opacity: 1;
 }
 
 .embedded-card__name {
@@ -678,5 +886,17 @@ body {
   }
   .register-strip__marquee {
     animation: none !important;
+  }
+  .intro-curtain {
+    display: none !important;
+  }
+  .hero__ascii-cursor,
+  .intro-curtain__cursor,
+  .project-card__cursor,
+  .embedded-card__cursor {
+    animation: none;
+  }
+  .hero__scan {
+    opacity: 0;
   }
 }

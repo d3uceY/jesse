@@ -2,10 +2,11 @@
 
 import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { registerStripItems } from "@/lib/site-data";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function StripSet() {
   return (
@@ -31,12 +32,32 @@ function StripSet() {
 
 export default function RegisterStrip() {
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    if (!marqueeRef.current || !progressRef.current) return;
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (reduceMotion || !marqueeRef.current) return;
+
+    // Thin red rule tracking page progress (functional for all users).
+    gsap.fromTo(
+      progressRef.current,
+      { scaleX: 0 },
+      {
+        scaleX: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: 0,
+          end: "max",
+          scrub: true,
+        },
+      }
+    );
+
+    if (reduceMotion) return;
 
     // Duplicated content (two identical sets below) + xPercent -50 loop = seamless marquee.
     const tween = gsap.to(marqueeRef.current, {
@@ -46,7 +67,42 @@ export default function RegisterStrip() {
       repeat: -1,
     });
 
+    // The strip hurries with scroll velocity, then settles. Hovering slows it.
+    const speed = { current: 1, target: 1 };
+    let hovering = false;
+    const velocityTrigger = ScrollTrigger.create({
+      trigger: document.body,
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        if (!hovering) {
+          speed.target = 1 + Math.min(1.2, Math.abs(self.getVelocity()) / 1500);
+        }
+      },
+    });
+    const tick = () => {
+      speed.current = gsap.utils.interpolate(speed.current, speed.target, 0.06);
+      tween.timeScale(speed.current);
+    };
+    gsap.ticker.add(tick);
+
+    const strip = marqueeRef.current.closest(".register-strip");
+    const onEnter = () => {
+      hovering = true;
+      speed.target = 0.2;
+    };
+    const onLeave = () => {
+      hovering = false;
+      speed.target = 1;
+    };
+    strip?.addEventListener("mouseenter", onEnter);
+    strip?.addEventListener("mouseleave", onLeave);
+
     return () => {
+      strip?.removeEventListener("mouseenter", onEnter);
+      strip?.removeEventListener("mouseleave", onLeave);
+      velocityTrigger.kill();
+      gsap.ticker.remove(tick);
       tween.kill();
     };
   }, { scope: marqueeRef });
@@ -57,6 +113,7 @@ export default function RegisterStrip() {
         <StripSet />
         <StripSet />
       </div>
+      <div className="register-strip__progress" ref={progressRef} aria-hidden="true" />
     </header>
   );
 }

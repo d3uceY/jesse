@@ -9,7 +9,7 @@ export default function Colophon() {
         {colophonItems.map((item) => (
           <div className="colophon__cell" key={item.key}>
             <div className="colophon__key">{item.key}</div>
-            <div className="colophon__value">
+            <div className={`colophon__value${item.tone === "ok" ? " colophon__value--ok" : ""}`}>
               {item.href ? (
                 <a href={item.href} target="_blank" rel="noopener noreferrer">
                   {item.value}

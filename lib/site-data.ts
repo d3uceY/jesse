@@ -2,7 +2,7 @@ export const registerStripItems = [
     "ISSUE № 001",
     "JULY 2026",
     "LAGOS · NIGERIA",
-    { text: "ONYEKWELU JESSE", red: true },
+    { text: "JESSE", red: true },
     "117 REPOSITORIES",
     "GITHUB.COM/D3UCEY",
     "X.COM/D3UC3Y",
@@ -131,8 +131,9 @@ export const colophonItems: {
     key: string;
     value: string;
     href?: string;
+    tone?: "ok";
 }[] = [
-        { key: "Status", value: "Available for opportunities" },
+        { key: "Status", value: "Available for opportunities", tone: "ok" },
         { key: "Built With", value: "Next.js · GSAP · CSS" },
         { key: "Typefaces", value: "Archivo Black · JetBrains Mono · Inter" },
         { key: "Updated", value: "July 2026" },

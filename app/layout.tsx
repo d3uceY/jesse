@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ONYEKWELU JESSE · ENGINEER · PORTFOLIO",
+  title: "JESSE · ENGINEER · PORTFOLIO",
   description:
     "Software engineer building desktop apps, CLI tools, and embedded systems — Go, Wails, React, ESP32.",
 };
