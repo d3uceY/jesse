@@ -74,5 +74,6 @@ public/assets/
 ## Media
 
 Screenshots come from each project's own repository (or its live site) and are
-cropped to 16:10. The Avnac plate is a web design made in Avnac. Logos are
-normalised to 192×192 tiles on white so they sit consistently on ink.
+cropped to 16:10. Avnac's are two screenshots of the app itself, cropped to the
+file grid and to the canvas. Logos are normalised to 192×192 tiles on white so
+they sit consistently on ink.
