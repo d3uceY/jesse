@@ -1,27 +1,27 @@
 {
-  "name": "my-portfolio-v2",
-  "version": "0.1.0",
+  "name": "d3ucey-portfolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
-    "gsap": "^3.15.0",
-    "lenis": "^1.3.26",
-    "next": "16.2.11",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "gsap": "3.13.0",
+    "lenis": "1.3.11",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.11",
+    "eslint-config-next": "16.4.6",
     "typescript": "^5"
-  }
+  },
+  "description": "d3ucey — portfolio for Jesse. Next.js App Router, GSAP scroll motion."
 }

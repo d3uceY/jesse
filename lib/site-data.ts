@@ -1,151 +1,201 @@
-export const registerStripItems = [
-    "ISSUE № 001",
-    "JULY 2026",
-    "LAGOS · NIGERIA",
-    { text: "JESSE", red: true },
-    "2× AWESOME WAILS",
-    "GITHUB.COM/D3UCEY",
-    "X.COM/D3UC3Y",
-    { text: "D3UCEY", red: true },
-] as const;
+export const site = {
+  name: "Jesse",
+  handle: "d3ucey",
+  email: "onyekwelujesse@gmail.com",
+  mailto: "mailto:onyekwelujesse@gmail.com",
+  github: "https://github.com/d3uceY",
+  tagline:
+    "I create tools that solve my own problems. If it solves yours, that's nice too.",
+} as const;
 
-export const heroStats: {
-    label: string;
-    value: string;
-    stat: string;
-    small?: boolean;
-}[] = [
-        { label: ">>> Awesome Wails", value: "2", stat: "FEATURED PROJECTS" },
-        {
-            label: ">>> Location",
-            value: "LAGOS",
-            stat: "NIGERIA · GMT+1",
-            small: true,
-        },
-        {
-            label: ">>> Stack",
-            value: "GO · TS · C++",
-            stat: "WAILS · ESP32 · REACT",
-            small: true,
-        },
-    ];
+export type Product = {
+  id: string;
+  name: string;
+  logo: string;
+  shot: string;
+  alt: string;
+  lede: string;
+  body: string;
+  facts: string[];
+  href: string;
+  hrefLabel: string;
+};
 
-export const manifestTheses = [
-    {
-        num: "01.",
-        headline: "I fix what annoys me",
-        body: "Clipcat exists because the Windows clipboard is Ass Cheeks (forgive my language). Ya-CLI exists because my aliases lived on three machines and kept getting lost. OpenSus exists because...because it can. None of it started as a portfolio piece. It started as friction I wanted gone.",
-        footnote: ">>> CLIPCAT · YA-CLI · OPENSUS",
-    },
-    {
-        num: "02.",
-        headline: "A few thousand downloads later",
-        body: "Avnac Studio is a design tool built with Go and Wails. Over a thousand people have it installed. Two of my projects sit on Awesome Wails, a curated list nobody bought their way onto.",
-        footnote: ">>> AVNAC STUDIO · AWESOME WAILS",
-    },
-    {
-        num: "03.",
-        headline: "Hardware that reports back",
-        body: "The Water Pump Regulator runs on an ESP32. It reads tank levels, drives relays, and publishes telemetry over MQTT, so a physical system reports its state without a cloud subscription. I could have just bought one but building stuff like this is fun.",
-        footnote: ">>> ESP32 · MQTT · C++",
-    },
-] as const;
+/** The five that carry the front of the page. Order is the page order. */
+export const products: Product[] = [
+  {
+    id: "avnac",
+    name: "Avnac Studio",
+    logo: "/assets/media/logo-avnac.webp",
+    shot: "/assets/media/app-avnac.webp",
+    alt: "A web design made in Avnac Studio: a blue and white agency layout with the line 'Websites with depth.'",
+    lede: "A design canvas for posters, layouts and social graphics, running as a native desktop app.",
+    body: "The web version, moved to Wails and Go so it opens in about a second and never needs a browser tab. Files live in the app's own storage, media goes through the binary, and export uses the real OS save dialog. Over a thousand people have downloaded it.",
+    facts: ["Go · Wails · TypeScript", "Windows, macOS, Linux", "1,000+ downloads"],
+    href: "https://avnac.design/studio",
+    hrefLabel: "avnac.design",
+  },
+  {
+    id: "vectile",
+    name: "Vectile",
+    logo: "/assets/media/logo-vectile.webp",
+    shot: "/assets/media/app-vectile.webp",
+    alt: "Vectile's search screen, returning ranked passages from notes and books for the query kubernetes rollout",
+    lede: "A private library for everything you've written, read or downloaded, searchable by meaning.",
+    body: "Notes, PDFs, books and whole repositories go into one SQLite file and come back ranked by hybrid vector and full-text search. The embedding model runs in the process. No API keys, no upload, no server to keep alive.",
+    facts: ["Go · SQLite · FTS5 + vectors", "Windows, macOS, Linux", "MCP server for local agents"],
+    href: "https://github.com/d3uceY/vectile",
+    hrefLabel: "github.com/d3uceY/vectile",
+  },
+  {
+    id: "clipcat",
+    name: "Clipcat",
+    logo: "/assets/media/logo-clipcat.webp",
+    shot: "/assets/media/app-clipcat.webp",
+    alt: "Clipcat's clipboard laid out as pinned paper notes, grouped into Pinned and Recent",
+    lede: "A clipboard manager that looks like a wall of notes pinned to paper.",
+    body: "Everything you copy lands on a note you can pin, label and search. Sensitive clips stay hidden until you ask for them, and the paste goes straight into whichever app you came from. Built for people who lose things they copied a minute ago.",
+    facts: ["Go · Wails · TypeScript", "Windows, macOS, Linux", "Featured in Awesome Wails"],
+    href: "https://getclipcat.com/",
+    hrefLabel: "getclipcat.com",
+  },
+  {
+    id: "spriteware",
+    name: "SpriteWare",
+    logo: "/assets/media/logo-spriteware.webp",
+    shot: "/assets/media/app-spriteware.webp",
+    alt: "SpriteWare's server screen, showing a local MCP endpoint and the config for connecting an assistant",
+    lede: "An MCP server that lets an agent open a sprite, draw pixels, look at the result and export it.",
+    body: "The agent gets a real editing surface instead of a blank canvas: read the sprite back, check what changed, then export to PNG, GIF or a sprite sheet the engine can eat. Aseprite stays open in the middle, so you can watch the drawing happen.",
+    facts: ["Go · Elm · MCP", "Windows, macOS, Linux", "Aseprite bridge"],
+    href: "https://github.com/d3uceY/SpriteWare",
+    hrefLabel: "github.com/d3uceY/SpriteWare",
+  },
+  {
+    id: "nooboo",
+    name: "NooBoo",
+    logo: "/assets/media/logo-nooboo.webp",
+    shot: "/assets/media/app-nooboo.webp",
+    alt: "NooBoo's library, listing mods and custom content with toggles, sizes and clash warnings",
+    lede: "A Sims 4 mod manager I built for my sister, with a backup before every install.",
+    body: "Mods, custom content, Tray files and packs in one list, with real thumbnails and a duplicate finder. It reads lastException.txt, names the file the stack points at and switches that one off, so the game boots again without an evening of bisecting.",
+    facts: ["Go · Wails · TypeScript", "Windows, macOS, Linux", "Save and Tray snapshots"],
+    href: "https://github.com/d3uceY/NooBoo",
+    hrefLabel: "github.com/d3uceY/NooBoo",
+  },
+];
 
-export const statsBar = [
-    { value: "2", label: "Awesome Wails" },
-    { value: "1K+", label: "Downloads" },
-    { value: "100%", label: "Open Source" },
-    { value: "3", label: "Languages" },
-] as const;
+export type ShelfItem = {
+  name: string;
+  kind: string;
+  note: string;
+  href: string;
+  logo: string;
+};
 
-export const projects: {
-    name: string;
-    href: string;
-    image?: string;
-    logo?: string;
-    desc: string;
-    tag: string;
-    badge: string;
-    featured?: boolean;
-}[] = [
-        {
-            name: "Avnac Studio",
-            href: "https://avnac.design/",
-            image: "/app-images/avnac-studio-png.png",
-            desc: "Lightweight desktop design tool. Think Canva but native. Built with Go and Wails. Over a thousand downloads.",
-            tag: ">>> Go · Wails · TypeScript",
-            badge: "1K+ DL",
-            featured: true,
-        },
-        {
-            name: "Clipcat",
-            href: "https://getclipcat.com/",
-            image: "/app-images/clipcat.png",
-            logo: "/app-logos/clipcat-logo.ico",
-            desc: "Cross-platform clipboard manager with a paper-like design. Windows clipboard, finally not terrible. Featured on Awesome Wails.",
-            tag: ">>> Wails · React",
-            badge: "AWESOME",
-        },
-        {
-            name: "Ya-GUI",
-            href: "https://github.com/d3uceY/Ya-GUI",
-            image: "/app-images/ya-gui.png",
-            logo: "/app-logos/ya-logo.png",
-            desc: "GUI frontend for the Ya CLI alias tool. Browse, edit, and manage aliases without touching a config file. Featured on Awesome Wails.",
-            tag: ">>> Wails · React · Go",
-            badge: "AWESOME",
-        },
-        {
-            name: "Ya-CLI",
-            href: "https://github.com/d3uceY/Ya-CLI",
-            image: "/app-images/ya-cli.png",
-            logo: "/app-logos/ya-logo.png",
-            desc: "Command shortcut and alias manager. Speed dial for your terminal.",
-            tag: ">>> Go · CLI",
-            badge: "16 ★",
-        },
-        {
-            name: "Cokpyt",
-            href: "https://github.com/d3uceY/Cokpyt",
-            image: "/app-images/cokpyt.png",
-            logo: "/app-logos/cokpyt-logo.png",
-            desc: "The GUI you always wished pip shipped with. Browse, install, and manage Python packages without the terminal.",
-            tag: ">>> Python · GUI",
-            badge: "PIP WRAPPER",
-        },
-        {
-            name: "OpenSus",
-            href: "https://github.com/d3uceY/OpenSus",
-            image: "/app-images/opensus.png",
-            logo: "/app-logos/opensus-logo.png",
-            desc: "Paste a GitHub URL. See the repo activity. Stars, forks, issues. All the signals. No tab sprawl.",
-            tag: ">>> Web · GitHub API",
-            badge: "REPO RADAR",
-        },
-    ];
+/** Everything past the five. Four rows until you ask for the rest. */
+export const shelf: ShelfItem[] = [
+  {
+    name: "Ya-GUI",
+    kind: "desktop",
+    note: "A window for the Ya alias manager. Also picked by Awesome Wails.",
+    href: "https://github.com/d3uceY/Ya-GUI",
+    logo: "/assets/media/shelf-ya-gui.webp",
+  },
+  {
+    name: "Cokpyt",
+    kind: "desktop",
+    note: "pip with a window. Install, upgrade and read the output without the flag guide.",
+    href: "https://d3ucey.github.io/Cokpyt/",
+    logo: "/assets/media/shelf-cokpyt.webp",
+  },
+  {
+    name: "StdScout",
+    kind: "desktop",
+    note: "Lists every executable on PATH and the folder it came from.",
+    href: "https://github.com/d3uceY/stdscout",
+    logo: "/assets/media/shelf-stdscout.webp",
+  },
+  {
+    name: "Debris",
+    kind: "desktop",
+    note: "A Windows debloat tool in Rust. Removes the apps nobody asked for.",
+    href: "https://github.com/d3uceY/debris",
+    logo: "/assets/media/shelf-debris.webp",
+  },
+  {
+    name: "Aka-nasu",
+    kind: "desktop",
+    note: "A 3D pomodoro timer you can poke at. Focus, with something to look at.",
+    href: "https://github.com/d3uceY/aka-nasu",
+    logo: "/assets/media/shelf-aka-nasu.webp",
+  },
+  {
+    name: "Retna",
+    kind: "cli",
+    note: "Reads a colour in any notation, prints it in another, and checks contrast against WCAG.",
+    href: "https://github.com/d3uceY/Retna",
+    logo: "/assets/media/shelf-retna.webp",
+  },
+  {
+    name: "Piper",
+    kind: "cli",
+    note: "Elevator music for the terminal while a command runs.",
+    href: "https://github.com/d3uceY/Piper",
+    logo: "/assets/media/shelf-piper.webp",
+  },
+  {
+    name: "Ya-CLI",
+    kind: "cli",
+    note: "Command shortcuts and aliases. This is what Ya-GUI drives.",
+    href: "https://github.com/d3uceY/Ya-CLI",
+    logo: "/assets/media/shelf-ya-cli.webp",
+  },
+  {
+    name: "OpenSus",
+    kind: "web",
+    note: "Paste a GitHub URL, get the repository's activity in one view.",
+    href: "https://github.com/d3uceY/OpenSus",
+    logo: "/assets/media/shelf-opensus.webp",
+  },
+  {
+    name: "WPFind",
+    kind: "web",
+    note: "A search bar for the WordPress admin, because 2026 still doesn't have one.",
+    href: "https://github.com/d3uceY/WPFind",
+    logo: "/assets/media/shelf-wpfnd.webp",
+  },
+];
 
-export const embeddedProjects = [
-    {
-        name: "Water Pump Regulator IoT",
-        href: "https://github.com/d3uceY/WATER_PUMP_REGULATOR-IOT-",
-        desc: "ESP32-based water pump controller. Monitors tank levels, drives relays, publishes telemetry over MQTT. Remote monitoring without the cloud subscription overhead.",
-        tags: [">>> ESP32 · C++", ">>> MQTT · IoT"],
-        status: "ONGOING",
-    },
-] as const;
-
-export const colophonItems: {
-    key: string;
-    value: string;
-    href?: string;
-    tone?: "ok";
-}[] = [
-        { key: "Status", value: "Available for opportunities", tone: "ok" },
-        { key: "Built With", value: "Next.js · GSAP · CSS" },
-        { key: "Typefaces", value: "Archivo Black · JetBrains Mono · Inter" },
-        { key: "Updated", value: "July 2026" },
-        { key: "Engineer", value: "github.com/d3uceY", href: "https://github.com/d3uceY" },
-        { key: "Contact", value: "x.com/d3uc3y", href: "https://x.com/d3uc3y" },
-        { key: "Location", value: "Lagos, Nigeria · GMT+1" },
-        { key: "License", value: "© 2026 Onyekwelu Jesse" },
-    ];
+export const faqs = [
+  {
+    question: "What do you actually do?",
+    answer:
+      "I build desktop apps and command-line tools end to end. The interface, the Go backend, the packaging, the installer, the release. Usually one person on a project, sometimes two.",
+  },
+  {
+    question: "Are you available for work?",
+    answer:
+      "Yes. Contract or full time, on desktop software, developer tooling or backend work. Tell me what you're building and I'll tell you whether I'm the right person for it.",
+  },
+  {
+    question: "What do you build with?",
+    answer:
+      "Go and TypeScript most days, Wails for the desktop shell, SQLite underneath when there's something to store, Elm where I want the interface to behave itself, and Rust when a job has to be fast and small. The rest is whatever the problem asks for.",
+  },
+  {
+    question: "Why does each app only do one thing?",
+    answer:
+      "Because that's how I use software. A tool that tries to do five things is one I stop opening. Every app here started as a single annoyance I wanted gone, and stopped growing when the annoyance was gone.",
+  },
+  {
+    question: "Are the tools free?",
+    answer:
+      "Most are open source and the link goes straight to the repo. The installers aren't code signed, so Windows and macOS will both complain once on first launch. That's what shipping alone looks like.",
+  },
+  {
+    question: "Can I send a bug or a patch?",
+    answer:
+      "Please. Issues and pull requests on the repo, or find me on GitHub. If you want a feature, describe what you're trying to do rather than the button you want, and it's usually easier to build the right thing.",
+  },
+];

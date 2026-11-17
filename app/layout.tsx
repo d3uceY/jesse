@@ -1,40 +1,43 @@
-import type { Metadata } from "next";
-import { Archivo_Black, JetBrains_Mono, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 
-const archivoBlack = Archivo_Black({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-micro",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "JESSE · ENGINEER · PORTFOLIO",
+  title: "d3ucey — software by Jesse",
   description:
-    "Software engineer building desktop apps, CLI tools, and embedded systems — Go, Wails, React, ESP32.",
+    "Jesse builds desktop apps and command-line tools: Avnac Studio, Vectile, Clipcat, SpriteWare, NooBoo and ten more. Fifteen tools, one person.",
+  authors: [{ name: "Jesse", url: "https://github.com/d3uceY" }],
+  openGraph: {
+    title: "d3ucey — software by Jesse",
+    description:
+      "Desktop apps and command-line tools. Avnac Studio, Vectile, Clipcat, SpriteWare, NooBoo.",
+    type: "website",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${archivoBlack.variable} ${jetBrainsMono.variable} ${inter.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <link
+          rel="preload"
+          href="/assets/fonts/archivo-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/media/app-avnac.webp"
+          as="image"
+          fetchPriority="high"
+        />
+        {children}
+      </body>
     </html>
   );
 }
