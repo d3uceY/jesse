@@ -45,8 +45,7 @@ export default function Shelf() {
           of the shelf
         </h2>
         <p className="shelf__copy t-body-large">
-          Small tools, half-finished experiments and one 3D timer. Not all of
-          them are worth a screenshot, but all of them work.
+          Small tools and half-finished experiments. Plus, i don't want to bloat your context window. Lol
         </p>
       </div>
 

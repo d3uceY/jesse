@@ -77,3 +77,14 @@ Screenshots come from each project's own repository (or its live site) and are
 cropped to 16:10. Avnac's are two screenshots of the app itself, cropped to the
 file grid and to the canvas. Logos are normalised to 192×192 tiles on white so
 they sit consistently on ink.
+
+## Pixel accents
+
+The accent square in every section head is a 12×12 gem drawn in Aseprite
+through SpriteWare, exported at 1× and scaled with `image-rendering: pixelated`
+so the pixels stay square. The contact section scatters six more artifacts
+(three gems, two sparkles), which drift against the scroll and fade in as the
+section arrives; the sparkles run a two-frame twinkle from a 10×5 strip.
+
+Source PNGs live in `public/assets/pixel/`. Redraw them in SpriteWare and drop
+in a new export to change them; nothing else needs touching.
