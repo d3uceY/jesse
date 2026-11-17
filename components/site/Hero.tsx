@@ -61,7 +61,7 @@ export default function Hero() {
 
         <div className="hero__meta t-label">
           <span>
-            {products.length + shelf.length} tools, one person
+            Wetin you dey think tho?
           </span>{" "}
           <span className="hero__pipe" aria-hidden="true">
             |

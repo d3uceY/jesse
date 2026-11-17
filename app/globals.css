@@ -1104,13 +1104,14 @@ body[data-nav="paper"] .site-header {
   width: 1.1vw;
   height: 1.1vw;
   flex: none;
-  border-radius: 0.15vw;
-  background: var(--accent);
+  background: url("/assets/pixel/mark-square.png") center / 100% 100% no-repeat;
+  image-rendering: pixelated;
   transition: transform var(--dur-base) var(--ease-out);
 }
 
 .shelf__toggle[aria-expanded="true"] .shelf__toggle-mark {
-  transform: rotate(45deg);
+  background-image: url("/assets/pixel/mark-gem.png");
+  transform: scale(1.08);
 }
 
 /* ==========================================================================
@@ -1187,13 +1188,14 @@ body[data-nav="paper"] .site-header {
   flex: none;
   width: 1.1vw;
   height: 1.1vw;
-  border-radius: 0.15vw;
-  background: var(--accent);
+  background: url("/assets/pixel/mark-square.png") center / 100% 100% no-repeat;
+  image-rendering: pixelated;
   transition: transform var(--dur-base) var(--ease-out);
 }
 
 .faq__trigger[aria-expanded="true"] .faq__mark {
-  transform: rotate(45deg);
+  background-image: url("/assets/pixel/mark-gem.png");
+  transform: scale(1.08);
 }
 
 .faq__panel {

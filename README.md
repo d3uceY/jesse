@@ -80,9 +80,11 @@ they sit consistently on ink.
 
 ## Pixel accents
 
-The accent square in every section head is a 12×12 gem drawn in Aseprite
-through SpriteWare, exported at 1× and scaled with `image-rendering: pixelated`
-so the pixels stay square. The contact section scatters six more artifacts
+The accent mark in every section head is a 12×12 gem drawn in Aseprite through
+SpriteWare, exported at 1× and scaled with `image-rendering: pixelated` so the
+pixels stay square. The two controls (FAQ rows, shelf "show more") use a
+beveled 12×12 pixel square that swaps to the gem when open, which is the
+original square-to-diamond state change without rotating a bitmap. The contact section scatters six more artifacts
 (three gems, two sparkles), which drift against the scroll and fade in as the
 section arrives; the sparkles run a two-frame twinkle from a 10×5 strip.
 
