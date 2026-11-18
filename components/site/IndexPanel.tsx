@@ -56,9 +56,6 @@ export default function IndexPanel() {
         >
           github.com/d3uceY
         </a>
-        <p className="panel__note t-label">
-          {products.length + shelf.length} tools, one person
-        </p>
       </div>
     </aside>
   );

@@ -10,6 +10,7 @@ import Faq from "./site/Faq";
 import Cta from "./site/Cta";
 import SiteFooter from "./site/SiteFooter";
 import IndexPanel from "./site/IndexPanel";
+import PixelMorph from "./site/PixelMorph";
 
 export default function PortfolioSite() {
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function PortfolioSite() {
     <>
       <div className="intro" data-intro aria-hidden="true">
         <div className="intro__inner">
-          <span className="intro__mark" />
+          <PixelMorph />
           <span className="intro__bar">
             <span />
           </span>

@@ -28,6 +28,7 @@ export default function Apps() {
       <ol className="apps__list">
         {products.map((app, index) => (
           <li
+            id={app.id}
             className={
               "apps__row grid" + (index % 2 === 1 ? " apps__row--flip" : "")
             }

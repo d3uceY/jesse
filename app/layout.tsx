@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "d3ucey — software by Jesse",
+  title: "d3ucey / Jesse",
   description:
     "Jesse builds desktop apps and command-line tools: Avnac Studio, Vectile, Clipcat, SpriteWare, NooBoo and ten more. Fifteen tools, one person.",
   authors: [{ name: "Jesse", url: "https://github.com/d3uceY" }],
   openGraph: {
-    title: "d3ucey — software by Jesse",
+    title: "d3ucey / Jesse",
     description:
       "Desktop apps and command-line tools. Avnac Studio, Vectile, Clipcat, SpriteWare, NooBoo.",
     type: "website",

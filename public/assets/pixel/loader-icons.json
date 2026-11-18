@@ -1,0 +1,128 @@
+{
+  "image": "loader-icons.png",
+  "width": 192,
+  "height": 16,
+  "frameWidth": 16,
+  "frameHeight": 16,
+  "columns": 12,
+  "padding": 0,
+  "frames": [
+    {
+      "index": 1,
+      "x": 0,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-0px -0px"
+    },
+    {
+      "index": 2,
+      "x": 16,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-16px -0px"
+    },
+    {
+      "index": 3,
+      "x": 32,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-32px -0px"
+    },
+    {
+      "index": 4,
+      "x": 48,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-48px -0px"
+    },
+    {
+      "index": 5,
+      "x": 64,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-64px -0px"
+    },
+    {
+      "index": 6,
+      "x": 80,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-80px -0px"
+    },
+    {
+      "index": 7,
+      "x": 96,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-96px -0px"
+    },
+    {
+      "index": 8,
+      "x": 112,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-112px -0px"
+    },
+    {
+      "index": 9,
+      "x": 128,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-128px -0px"
+    },
+    {
+      "index": 10,
+      "x": 144,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-144px -0px"
+    },
+    {
+      "index": 11,
+      "x": 160,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-160px -0px"
+    },
+    {
+      "index": 12,
+      "x": 176,
+      "y": 0,
+      "w": 16,
+      "h": 16,
+      "durationMs": 130,
+      "backgroundPosition": "-176px -0px"
+    }
+  ],
+  "tags": [
+    {
+      "name": "icons",
+      "from": 1,
+      "to": 12,
+      "direction": "forward"
+    }
+  ],
+  "scale": 1
+}
