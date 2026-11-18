@@ -1,16 +1,14 @@
 name: release
 
-# The site is published on a tag and on nothing else: pushes to main, PRs and
-# merges build nothing. To ship, bump a tag.
-#
-#   git tag v1.1.0
-#   git push origin v1.1.0
+# The site is published on every push to main. The github-pages environment
+# allows main by default, so no tag rule is needed.
 #
 # One-time setup: Settings -> Pages -> Source must be "GitHub Actions".
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
