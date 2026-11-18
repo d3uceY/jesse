@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect } from "react";
 import SiteHeader from "./site/SiteHeader";
 import Hero from "./site/Hero";
 import About from "./site/About";
@@ -11,31 +8,16 @@ import Cta from "./site/Cta";
 import SiteFooter from "./site/SiteFooter";
 import IndexPanel from "./site/IndexPanel";
 import PixelMorph from "./site/PixelMorph";
+import MotionBoot from "./site/MotionBoot";
 
+/**
+ * The page shell is a server component on purpose. Every section below is
+ * rendered to HTML on the server, so the content exists before a byte of
+ * JavaScript runs — which is what makes it indexable no matter how much of the
+ * site is animated on the client. MotionBoot is the only client island in the
+ * shell; it starts the motion layer and changes nothing the document says.
+ */
 export default function PortfolioSite() {
-  useEffect(() => {
-    let disposed = false;
-    let destroy: (() => void) | undefined;
-
-    void (async () => {
-      try {
-        const { boot } = await import("@/lib/motion/boot");
-        if (disposed) return;
-        destroy = await boot();
-      } catch (error) {
-        // The page stays fully readable without JS; fail quietly.
-        console.error("[d3ucey] motion failed to start:", error);
-        document.querySelector("[data-intro]")?.remove();
-      }
-      if (disposed) destroy?.();
-    })();
-
-    return () => {
-      disposed = true;
-      destroy?.();
-    };
-  }, []);
-
   return (
     <>
       <div className="intro" data-intro aria-hidden="true">
@@ -46,11 +28,16 @@ export default function PortfolioSite() {
           </span>
         </div>
       </div>
+
+      {/* Without JS the curtain never lifts, the disclosures never open and the
+          toggles do nothing. This puts the page back into a readable state. */}
       <noscript
         dangerouslySetInnerHTML={{
-          __html: "<style>[data-intro]{display:none!important}</style>",
+          __html:
+            "<style>[data-intro]{display:none!important}.faq__panel,.shelf__rest{height:auto!important}[data-panel-toggle],[data-archive-toggle]{display:none!important}</style>",
         }}
       />
+
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -72,6 +59,7 @@ export default function PortfolioSite() {
       </div>
 
       <IndexPanel />
+      <MotionBoot />
     </>
   );
 }

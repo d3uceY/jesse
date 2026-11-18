@@ -1,4 +1,4 @@
-import { products, shelf, site } from "@/lib/site-data";
+import { site } from "@/lib/site-data";
 
 const LINKS = [
   { href: "#about", label: "about" },

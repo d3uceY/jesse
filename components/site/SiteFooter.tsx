@@ -8,10 +8,10 @@ export default function SiteFooter() {
         <p className="footer__brand">{site.handle}</p>
 
         <nav className="footer__col" aria-label="Apps">
-          <p className="footer__heading t-medium">
+          <h2 className="footer__heading t-medium">
             <span className="eyebrow__mark" aria-hidden="true" />
             {" apps"}
-          </p>
+          </h2>
           {products.map((app) => (
             <a
               className="footer__link"
@@ -26,10 +26,10 @@ export default function SiteFooter() {
         </nav>
 
         <nav className="footer__col" aria-label="Shelf">
-          <p className="footer__heading t-medium">
+          <h2 className="footer__heading t-medium">
             <span className="eyebrow__mark" aria-hidden="true" />
             {" shelf"}
-          </p>
+          </h2>
           {shelf.slice(0, 5).map((item) => (
             <a
               className="footer__link"
@@ -46,11 +46,11 @@ export default function SiteFooter() {
           </a>
         </nav>
 
-        <div className="footer__col">
-          <p className="footer__heading t-medium">
+        <nav className="footer__col" aria-label="Elsewhere">
+          <h2 className="footer__heading t-medium">
             <span className="eyebrow__mark" aria-hidden="true" />
             {" elsewhere"}
-          </p>
+          </h2>
           <a className="footer__link" href={site.mailto}>
             {site.email}
           </a>
@@ -58,9 +58,17 @@ export default function SiteFooter() {
             className="footer__link"
             href={site.github}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             GitHub
+          </a>
+          <a
+            className="footer__link"
+            href={site.x}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
           </a>
           <a
             className="footer__link"
@@ -81,7 +89,7 @@ export default function SiteFooter() {
           <a className="footer__link" href="#top">
             back to top
           </a>
-        </div>
+        </nav>
 
         <div className="footer__cta">
           <a className="btn" href={site.mailto}>

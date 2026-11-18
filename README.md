@@ -1,3 +1,3 @@
 # d3uceY
 
-My personal website/ Open source Catalog.
+My personal website / open source catalog 

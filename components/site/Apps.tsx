@@ -16,7 +16,7 @@ export default function Apps() {
 
       <div className="apps__intro grid">
         <h2 className="apps__title t-large" data-reveal>
-          five things
+          five things{" "}
           <br />
           you can install
         </h2>
@@ -25,7 +25,7 @@ export default function Apps() {
         </p>
       </div>
 
-      <ol className="apps__list">
+      <ol className="apps__list" role="list" aria-label="Shipped apps">
         {products.map((app, index) => (
           <li
             id={app.id}
@@ -40,9 +40,10 @@ export default function Apps() {
                   className="apps__logo"
                   src={app.logo}
                   alt=""
-                  width="96"
-                  height="96"
+                  width={192}
+                  height={192}
                   loading="lazy"
+                  decoding="async"
                 />
                 <h3 className="apps__name">{app.name}</h3>
               </div>
@@ -50,7 +51,7 @@ export default function Apps() {
               <p className="apps__lede t-medium">{app.lede}</p>
               <p className="apps__body t-body">{app.body}</p>
 
-              <ul className="apps__facts" aria-label="At a glance">
+              <ul className="apps__facts" role="list" aria-label="At a glance">
                 {app.facts.map((fact) => (
                   <li key={fact}>{fact}</li>
                 ))}
@@ -60,9 +61,10 @@ export default function Apps() {
                 className="apps__link"
                 href={app.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <span>{app.hrefLabel}</span>
+                <span className="sr-only"> (opens in a new tab)</span>
                 <Arrow className="apps__link-arrow" />
               </a>
             </div>
@@ -74,6 +76,7 @@ export default function Apps() {
                 width="1600"
                 height="1000"
                 loading="lazy"
+                decoding="async"
               />
             </figure>
           </li>

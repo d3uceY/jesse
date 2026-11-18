@@ -45,7 +45,7 @@ export default function Cta() {
 
         <div className="cta__content">
           <h2 className="cta__line t-xl" data-reveal>
-            got something
+            got something{" "}
             <br />
             that needs building?
           </h2>

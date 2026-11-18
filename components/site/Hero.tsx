@@ -51,6 +51,15 @@ export default function Hero() {
         d3ucey
       </h1>
 
+      {/* The wordmark is the h1 for the design's sake; this is the sentence a
+          crawler and a screen reader need first. Visually clipped, textually
+          the page summary. */}
+      <p className="sr-only">
+        Jesse (d3ucey) is an independent software developer who builds
+        open-source desktop apps and command-line tools, including Avnac Studio,
+        Vectile, Clipcat, SpriteWare and NooBoo.
+      </p>
+
       <div className="hero__stage">
         {WINDOWS.map((win) => (
           <Window win={win} key={win.src} />
@@ -73,7 +82,13 @@ export default function Hero() {
         </div>
 
         <p className="hero__hint">
-          <button className="hint" type="button" data-panel-toggle>
+          <button
+            className="hint"
+            type="button"
+            data-panel-toggle
+            aria-controls="panel"
+            aria-expanded="false"
+          >
             press &apos;m&apos; for index
           </button>
         </p>

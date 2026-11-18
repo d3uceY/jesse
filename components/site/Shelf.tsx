@@ -13,7 +13,15 @@ export default function Shelf() {
       <span className="shelf__note">{item.note}</span>
       <span className="shelf__slot">
         <span className="shelf__kind">{item.kind}</span>
-        <img className="shelf__logo" src={item.logo} alt="" loading="lazy" />
+        <img
+        className="shelf__logo"
+        src={item.logo}
+        alt=""
+        width={192}
+        height={192}
+        loading="lazy"
+        decoding="async"
+      />
       </span>
       <a
         className="shelf__go"
@@ -41,7 +49,7 @@ export default function Shelf() {
 
       <div className="shelf__intro grid">
         <h2 className="shelf__title t-large" data-reveal>
-          the rest
+          the rest{" "}
           <br />
           of the shelf
         </h2>
@@ -51,10 +59,17 @@ export default function Shelf() {
       </div>
 
       <div className="shelf__body" data-archive>
-        <ul className="shelf__list">{head.map(row)}</ul>
+        <ul className="shelf__list" role="list">
+          {head.map(row)}
+        </ul>
 
-        <div className="shelf__rest" data-archive-panel>
-          <ul className="shelf__list">{rest.map(row)}</ul>
+        {/* Collapsed by CSS, so the markup stays in the HTML for crawlers;
+            archive.js marks it inert while it is 0px tall so it never becomes
+            an invisible tab stop. */}
+        <div className="shelf__rest" id="shelf-rest" data-archive-panel>
+          <ul className="shelf__list" role="list">
+            {rest.map(row)}
+          </ul>
         </div>
 
         <button
@@ -62,6 +77,7 @@ export default function Shelf() {
           type="button"
           data-archive-toggle
           aria-expanded="false"
+          aria-controls="shelf-rest"
         >
           <span className="shelf__toggle-label" data-archive-toggle-label>
             show the other {rest.length}

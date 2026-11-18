@@ -19,7 +19,7 @@ export default function Faq() {
       <div className="faq__body grid">
         <div className="faq__aside">
           <h2 className="faq__title t-large" data-reveal>
-            the bits
+            the bits{" "}
             <br />
             people ask
           </h2>

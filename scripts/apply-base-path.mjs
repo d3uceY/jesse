@@ -26,6 +26,13 @@ const EXTENSIONS = new Set([".html", ".txt", ".rsc", ".css", ".js", ".json"]);
 const FROM = "/assets/";
 const TO = `${base}/assets/`;
 
+// JSON-LD and llms.txt hold absolute URLs that already carry the base path
+// ("https://host/My-Portfolio-v2/assets/..."). Rewriting those again would
+// nest the prefix. Park the already-correct form, rewrite the bare one, then
+// put it back, so the pass is idempotent.
+const DONE = `${base}/assets/`;
+const PARK = "\u0000d3ucey-base-path\u0000";
+
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   const files = [];
@@ -44,10 +51,13 @@ let replacements = 0;
 for (const file of files) {
   const before = await readFile(file, "utf8");
   if (!before.includes(FROM)) continue;
-  const count = before.split(FROM).length - 1;
-  await writeFile(file, before.split(FROM).join(TO), "utf8");
+  const parked = before.split(DONE).join(PARK);
+  const bare = parked.split(FROM).length - 1;
+  if (bare === 0) continue;
+  const after = parked.split(FROM).join(TO).split(PARK).join(DONE);
+  await writeFile(file, after, "utf8");
   rewritten += 1;
-  replacements += count;
+  replacements += bare;
 }
 
 console.log(
