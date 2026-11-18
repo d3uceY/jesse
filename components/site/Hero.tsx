@@ -1,4 +1,4 @@
-import { products, shelf, site } from "@/lib/site-data";
+import { site } from "@/lib/site-data";
 import Arrow from "./Arrow";
 
 type Win = {
@@ -9,8 +9,8 @@ type Win = {
 };
 
 const WINDOWS: Win[] = [
-  { index: 0, src: "/assets/media/hero-avnac.webp", width: 1200, height: 750 },
-  { index: 1, src: "/assets/media/hero-vectile.webp", width: 1200, height: 750 },
+  { index: 0, src: "/assets/media/hero-nooboo.webp", width: 1200, height: 750 },
+  { index: 1, src: "/assets/media/hero-spriteware.webp", width: 1200, height: 750 },
   { index: 2, src: "/assets/media/hero-clipcat.webp", width: 1200, height: 750 },
 ];
 

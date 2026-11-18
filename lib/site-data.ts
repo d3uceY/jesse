@@ -171,31 +171,26 @@ export const faqs = [
   {
     question: "What do you actually do?",
     answer:
-      "I build desktop apps and command-line tools end to end. The interface, the Go backend, the packaging, the installer, the release. Usually one person on a project, sometimes two.",
-  },
-  {
-    question: "Are you available for work?",
-    answer:
-      "Yes. Contract or full time, on desktop software, developer tooling or backend work. Tell me what you're building and I'll tell you whether I'm the right person for it.",
+      "I build web apps, desktop applications and CLI tools for fun, exploring everything from frontend experiences to full-stack development and end-to-end product engineering.",
   },
   {
     question: "What do you build with?",
     answer:
-      "Go and TypeScript most days, Wails for the desktop shell, SQLite underneath when there's something to store, Elm where I want the interface to behave itself, and Rust when a job has to be fast and small. The rest is whatever the problem asks for.",
+      "Go and TypeScript most days ( for backend and desktop applications ), with occasional use of Rust when i need things to be fast. I use React for frontend interfaces. ",
   },
   {
     question: "Why does each app only do one thing?",
     answer:
-      "Because that's how I use software. A tool that tries to do five things is one I stop opening. Every app here started as a single annoyance I wanted gone, and stopped growing when the annoyance was gone.",
+      "Because that's how I use software. The problems they solve in my life appered as \"one thing\"😂. Most applications here are built for my personal use.",
   },
   {
     question: "Are the tools free?",
     answer:
-      "Most are open source and the link goes straight to the repo. The installers aren't code signed, so Windows and macOS will both complain once on first launch. That's what shipping alone looks like.",
+      "They are open source, bro.",
   },
   {
     question: "Can I send a bug or a patch?",
     answer:
-      "Please. Issues and pull requests on the repo, or find me on GitHub. If you want a feature, describe what you're trying to do rather than the button you want, and it's usually easier to build the right thing.",
+      "Please. Issues and pull requests on the repo, or find me on GitHub. If you want a feature, describe what you're trying to do. Thank you!!! (●'◡'●).",
   },
 ];
