@@ -1,4 +1,5 @@
 import { products, shelf, site } from "@/lib/site-data";
+import Arrow from "./Arrow";
 
 type Win = {
   index: number;
@@ -66,7 +67,9 @@ export default function Hero() {
           <span className="hero__pipe" aria-hidden="true">
             |
           </span>{" "}
-          <span>Scroll to explore ↓</span>
+          <span className="hero__scroll">
+            Scroll to explore <Arrow dir="s" />
+          </span>
         </div>
 
         <p className="hero__hint">

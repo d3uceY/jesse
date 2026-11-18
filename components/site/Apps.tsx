@@ -1,4 +1,5 @@
 import { products } from "@/lib/site-data";
+import Arrow from "./Arrow";
 
 export default function Apps() {
   return (
@@ -62,9 +63,7 @@ export default function Apps() {
                 rel="noreferrer"
               >
                 <span>{app.hrefLabel}</span>
-                <span className="apps__link-arrow" aria-hidden="true">
-                  ↗
-                </span>
+                <Arrow className="apps__link-arrow" />
               </a>
             </div>
 

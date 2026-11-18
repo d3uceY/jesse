@@ -1,4 +1,5 @@
 import { products, shelf, site } from "@/lib/site-data";
+import Arrow from "./Arrow";
 
 export default function SiteFooter() {
   return (
@@ -95,7 +96,7 @@ export default function SiteFooter() {
       <div className="footer__bottom grid">
         <p className="footer__fine">© 2026 {site.name} / d3uceY</p>
         <a className="footer__fine" href="#top" data-back-to-top>
-          ↑ back to top
+          <Arrow dir="n" /> back to top
         </a>
         <p className="footer__fine footer__legal">next.js, gsap, lenis</p>
       </div>

@@ -82,7 +82,13 @@ they sit consistently on ink.
 
 The accent mark in every section head is a 12×12 gem drawn in Aseprite through
 SpriteWare, exported at 1× and scaled with `image-rendering: pixelated` so the
-pixels stay square. The two controls (FAQ rows, shelf "show more") use a
+pixels stay square. The arrows (↗ on links, ↑ and ↓ in the footer and hero) are
+drawn the same way, then exported as vector rects and rendered inline by
+`components/site/Arrow.tsx` with `shape-rendering="crispEdges"`: they inherit
+`currentColor`, stay sharp at any size, and turn accent on hover. Buttons are clipped to stepped corners
+and carry an ink pixel tile instead of a rounded square. Because the clip also
+swallows an outline, the button's focus state is an inset double ring (paper
+outside, ink inside) that follows the same stepped silhouette. The two controls (FAQ rows, shelf "show more") use a
 beveled 12×12 pixel square that swaps to the gem when open, which is the
 original square-to-diamond state change without rotating a bitmap. The contact section scatters six more artifacts
 (three gems, two sparkles), which drift against the scroll and fade in as the

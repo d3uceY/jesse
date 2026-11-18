@@ -1,4 +1,5 @@
 import { faqs, site } from "@/lib/site-data";
+import Arrow from "./Arrow";
 
 export default function Faq() {
   return (
@@ -30,7 +31,7 @@ export default function Faq() {
             target="_blank"
             rel="noreferrer"
           >
-            github.com/d3uceY ↗
+            github.com/d3uceY <Arrow />
           </a>
         </div>
 

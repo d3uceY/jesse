@@ -1,4 +1,5 @@
 import { shelf } from "@/lib/site-data";
+import Arrow from "./Arrow";
 
 const FIRST = 4;
 
@@ -21,7 +22,7 @@ export default function Shelf() {
         rel="noreferrer"
         aria-label={item.name + " on GitHub"}
       >
-        <span aria-hidden="true">↗</span>
+        <Arrow />
       </a>
     </li>
   );

@@ -519,13 +519,44 @@ body[data-nav="paper"] .site-header {
 
 /* buttons ----------------------------------------------------------------- */
 
+/* --------------------------------------------------------------------------
+   Pixel arrows — rects from SpriteWare's SVG export (see components/site/
+   Arrow.tsx), so they inherit currentColor and stay sharp at any scale.
+   -------------------------------------------------------------------------- */
+
+.arrow {
+  display: inline-block;
+  flex: none;
+  width: 1.06vw;
+  height: 1.06vw;
+  overflow: visible;
+  vertical-align: -0.08em;
+}
+
+.arrow--n,
+.arrow--s {
+  width: 0.95vw;
+  height: 1.06vw;
+}
+
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35vw;
+}
+
+/* --------------------------------------------------------------------------
+   Button — the pill, redrawn with two stepped corners per side and an ink
+   pixel tile instead of a rounded square.
+   -------------------------------------------------------------------------- */
+
 .btn {
+  --cut: 4px;
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5vw;
-  padding: 0.28vw 0.65vw 0.28vw 0.4vw;
-  border-radius: var(--r-btn);
+  padding: 0.32vw 0.7vw 0.32vw 0.42vw;
   background: var(--accent);
   color: var(--ink);
   font-size: var(--fs-small);
@@ -533,7 +564,29 @@ body[data-nav="paper"] .site-header {
   letter-spacing: -0.05em;
   font-weight: 500;
   white-space: nowrap;
-  transition: box-shadow var(--dur-base) var(--ease-out),
+  clip-path: polygon(
+    calc(var(--cut) * 2) 0,
+    calc(100% - var(--cut) * 2) 0,
+    calc(100% - var(--cut) * 2) var(--cut),
+    calc(100% - var(--cut)) var(--cut),
+    calc(100% - var(--cut)) calc(var(--cut) * 2),
+    100% calc(var(--cut) * 2),
+    100% calc(100% - var(--cut) * 2),
+    calc(100% - var(--cut)) calc(100% - var(--cut) * 2),
+    calc(100% - var(--cut)) calc(100% - var(--cut)),
+    calc(100% - var(--cut) * 2) calc(100% - var(--cut)),
+    calc(100% - var(--cut) * 2) 100%,
+    calc(var(--cut) * 2) 100%,
+    calc(var(--cut) * 2) calc(100% - var(--cut)),
+    var(--cut) calc(100% - var(--cut)),
+    var(--cut) calc(100% - var(--cut) * 2),
+    0 calc(100% - var(--cut) * 2),
+    0 calc(var(--cut) * 2),
+    var(--cut) calc(var(--cut) * 2),
+    var(--cut) var(--cut),
+    calc(var(--cut) * 2) var(--cut)
+  );
+  transition: filter var(--dur-base) var(--ease-out),
     transform var(--dur-base) var(--ease-out);
 }
 
@@ -541,8 +594,8 @@ body[data-nav="paper"] .site-header {
   width: 1.8vw;
   height: 1.8vw;
   flex: none;
-  border-radius: 0.15vw;
-  background: var(--ink);
+  background: url("/assets/pixel/mark-ink.png") center / 100% 100% no-repeat;
+  image-rendering: pixelated;
 }
 
 .btn__mask {
@@ -555,9 +608,22 @@ body[data-nav="paper"] .site-header {
   transition: transform var(--dur-base) var(--ease-out);
 }
 
+/* a clipped box cannot cast a box-shadow, so the glow is a drop-shadow */
 .btn:hover {
-  box-shadow: 0 0 0 0.4vw rgb(255 216 61 / 0.35),
-    0 0.6vw 1.4vw rgb(17 17 15 / 0.18);
+  filter: drop-shadow(0 0 0.5vw rgb(255 216 61 / 0.5))
+    drop-shadow(0 0.35vw 0.8vw rgb(17 17 15 / 0.3));
+}
+
+/* The clip also swallows the global outline, so focus is an inset ring: it is
+   painted inside the border box, gets stepped by the same clip, and reads as a
+   pixel border rather than a browser default. */
+.btn:focus-visible {
+  outline: none;
+  /* a paper band outside an ink band: legible on the paper header and the
+     ink contact section alike, and both bands follow the stepped clip */
+  box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 6px var(--ink);
+  filter: drop-shadow(0 0 0.55vw rgb(255 216 61 / 0.65))
+    drop-shadow(0 0.35vw 0.8vw rgb(17 17 15 / 0.3));
 }
 
 .btn:hover .btn__label {
@@ -565,8 +631,9 @@ body[data-nav="paper"] .site-header {
 }
 
 .btn--lg {
+  --cut: 6px;
   font-size: var(--fs-medium);
-  padding: 0.5vw 1vw 0.5vw 0.6vw;
+  padding: 0.55vw 1vw 0.55vw 0.6vw;
   gap: 0.7vw;
 }
 
@@ -1216,7 +1283,7 @@ body[data-nav="paper"] .site-header {
 .cta {
   display: flex;
   justify-content: center;
-  background: var(--paper);
+  background: var(--ink);
 }
 
 .cta__frame {
@@ -1229,6 +1296,9 @@ body[data-nav="paper"] .site-header {
   overflow: hidden;
   background: var(--ink);
   color: var(--paper);
+  /* the section behind is ink too, so the shrink reads through a soft edge */
+  box-shadow: 0 0 0 1px rgb(var(--paper-rgb) / 0.06),
+    0 2vw 5vw rgb(0 0 0 / 0.5);
   will-change: width, border-radius;
 }
 
@@ -1538,9 +1608,25 @@ body[data-nav="paper"] .site-header {
   }
 
   .btn {
+    --cut: 2px;
     gap: 2vw;
-    padding: 1.6vw 3vw 1.6vw 2vw;
+    padding: 1.9vw 3.2vw 1.9vw 2.2vw;
     font-size: 3.4vw;
+  }
+
+  .arrow {
+    width: 3.4vw;
+    height: 3.4vw;
+  }
+
+  .arrow--n,
+  .arrow--s {
+    width: 3.06vw;
+    height: 3.4vw;
+  }
+
+  .hero__scroll {
+    gap: 1.4vw;
   }
 
   .btn__mark {
@@ -1549,8 +1635,9 @@ body[data-nav="paper"] .site-header {
   }
 
   .btn--lg {
+    --cut: 3px;
     font-size: 5vw;
-    padding: 2.4vw 4vw 2.4vw 3vw;
+    padding: 2.6vw 4vw 2.6vw 3vw;
   }
 
   .btn--lg .btn__mark {
