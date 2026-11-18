@@ -21,8 +21,7 @@ export default function Apps() {
           you can install
         </h2>
         <p className="apps__copy t-body-large">
-          Desktop apps, mostly. Each one is a real release with an installer, a
-          changelog and issues from strangers.
+          Desktop apps, mostly. All Open source btw. I need contributors lmao.
         </p>
       </div>
 

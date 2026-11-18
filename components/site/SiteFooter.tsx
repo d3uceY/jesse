@@ -98,7 +98,7 @@ export default function SiteFooter() {
         <a className="footer__fine" href="#top" data-back-to-top>
           <Arrow dir="n" /> back to top
         </a>
-        <p className="footer__fine footer__legal">next.js, gsap, lenis</p>
+        {/* <p className="footer__fine footer__legal">next.js, gsap, lenis</p> */}
       </div>
     </footer>
   );

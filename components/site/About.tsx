@@ -33,7 +33,7 @@ export default function About() {
 
         <div className="about__right">
           <article className="about__block">
-            <h3 className="t-medium">The pattern</h3>
+            <h3 className="t-medium">Why i build</h3>
             <p className="t-body">
               Vectile exists because I wanted to find my own notes and PDFs without knowing its content.
               Clipcat exists because I kept losing what I
@@ -43,7 +43,7 @@ export default function About() {
           <article className="about__block">
             <h3 className="t-medium">Go, Rust behind, TypeScript in front</h3>
             <p className="t-body">
-              I use Go and Rust and TypeScript for most of my backends and desktop applications.
+              I use Go and Rust, and TypeScript for most of my backends and desktop applications.
               Go when i need to build a desktop application or cli tool quickly. 
               Rust when i need that sweet sweet performance and TypeScript for frontends mostly.
             </p>
