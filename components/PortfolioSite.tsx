@@ -24,6 +24,7 @@ export default function PortfolioSite() {
       } catch (error) {
         // The page stays fully readable without JS; fail quietly.
         console.error("[d3ucey] motion failed to start:", error);
+        document.querySelector("[data-intro]")?.remove();
       }
       if (disposed) destroy?.();
     })();
@@ -36,6 +37,19 @@ export default function PortfolioSite() {
 
   return (
     <>
+      <div className="intro" data-intro aria-hidden="true">
+        <div className="intro__inner">
+          <span className="intro__mark" />
+          <span className="intro__bar">
+            <span />
+          </span>
+        </div>
+      </div>
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html: "<style>[data-intro]{display:none!important}</style>",
+        }}
+      />
       <a className="skip-link" href="#main">
         Skip to content
       </a>

@@ -88,6 +88,9 @@ export default function SiteFooter() {
             <span className="btn__mark" aria-hidden="true" />
             <span className="btn__mask">
               <span className="btn__label">Say hello</span>
+              <span className="btn__label btn__label--clone" aria-hidden="true">
+                Say hello
+              </span>
             </span>
           </a>
         </div>

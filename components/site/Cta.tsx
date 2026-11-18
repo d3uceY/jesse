@@ -30,6 +30,19 @@ export default function Cta() {
           <span className="cta__pixel cta__pixel--f cta__pixel--spark" data-pixel="18" />
         </div>
 
+        <div className="cta__sprites" aria-hidden="true">
+          <div className="cta__sprite cta__sprite--camera" data-cta-sprite="0">
+            <div className="cta__sprite-inner" data-cta-sprite-inner>
+              <img src="/assets/pixel/cta-camera.png" alt="" width="64" height="48" loading="lazy" />
+            </div>
+          </div>
+          <div className="cta__sprite cta__sprite--pager" data-cta-sprite="1">
+            <div className="cta__sprite-inner" data-cta-sprite-inner>
+              <img src="/assets/pixel/cta-pager.png" alt="" width="48" height="56" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
         <div className="cta__content">
           <h2 className="cta__line t-xl" data-reveal>
             got something
@@ -41,6 +54,9 @@ export default function Cta() {
             <span className="btn__mark" aria-hidden="true" />
             <span className="btn__mask">
               <span className="btn__label">tell me what you need</span>
+              <span className="btn__label btn__label--clone" aria-hidden="true">
+                tell me what you need
+              </span>
             </span>
           </a>
         </div>

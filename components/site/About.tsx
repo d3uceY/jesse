@@ -1,3 +1,7 @@
+import PixelSheet from "./PixelSheet";
+
+const BUTTERFLY_TIMINGS = [140, 90, 140, 90];
+
 export default function About() {
   return (
     <section className="about" id="about" data-section data-nav="paper">
@@ -20,15 +24,27 @@ export default function About() {
 
       <div className="about__body grid">
         <div className="about__left">
-          <figure className="about__figure" data-parallax="14">
-            <img
-              src="/assets/media/desk.webp"
-              alt="A desk at night: a monitor, a laptop and a keyboard, lit by one lamp"
-              width="960"
-              height="720"
-              loading="lazy"
-            />
-          </figure>
+          <div className="about__media" data-figure-scroll="about">
+            <figure className="about__figure">
+              <img
+                src="/assets/media/jesse.webp"
+                alt="Jesse in a green cap and glasses, taking a mirror selfie in a cream tee"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </figure>
+            <div className="about__sprite" aria-hidden="true">
+              <PixelSheet
+                className="about__butterfly"
+                src="/assets/pixel/butterfly.png"
+                frames={4}
+                frameWidth={32}
+                frameHeight={32}
+                timings={BUTTERFLY_TIMINGS}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="about__right">

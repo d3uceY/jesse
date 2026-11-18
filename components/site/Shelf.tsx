@@ -46,7 +46,7 @@ export default function Shelf() {
           of the shelf
         </h2>
         <p className="shelf__copy t-body-large">
-          Small tools and half-finished experiments. Plus, i don't want to bloat your context window. Lol
+          Small tools and half-finished experiments. Plus, i don&apos;t want to bloat your context window. Lol
         </p>
       </div>
 

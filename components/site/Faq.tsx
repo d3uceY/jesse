@@ -1,5 +1,7 @@
-import { faqs, site } from "@/lib/site-data";
-import Arrow from "./Arrow";
+import PixelSheet from "./PixelSheet";
+import { faqs } from "@/lib/site-data";
+
+const DESK_TIMINGS = [320, 260, 320, 260];
 
 export default function Faq() {
   return (
@@ -21,18 +23,18 @@ export default function Faq() {
             <br />
             people ask
           </h2>
-          <p className="faq__note t-body">
-            If it isn&apos;t here, ask me on GitHub. I answer slower on weekends,
-            but I do answer.
-          </p>
-          <a
-            className="faq__link"
-            href={site.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            github.com/d3uceY <Arrow />
-          </a>
+
+          <figure className="faq__figure" data-figure-scroll="faq">
+            <PixelSheet
+              className="faq__sprite"
+              src="/assets/pixel/faq-desk.png"
+              frames={4}
+              frameWidth={96}
+              frameHeight={64}
+              timings={DESK_TIMINGS}
+              label="A pixel-art desk at night: a monitor showing a small cat, a plant, a mug and a window full of stars"
+            />
+          </figure>
         </div>
 
         <div className="faq__list" data-faq>

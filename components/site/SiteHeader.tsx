@@ -46,6 +46,9 @@ export default function SiteHeader() {
               <span className="btn__label" data-btn-label>
                 Say hello
               </span>
+              <span className="btn__label btn__label--clone" aria-hidden="true">
+                Say hello
+              </span>
             </span>
           </a>
         </div>
