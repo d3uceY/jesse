@@ -1,6 +1,18 @@
 import type { NextConfig } from "next";
 
+// A GitHub Pages project site is served from /<repo>/, so the release workflow
+// sets NEXT_PUBLIC_BASE_PATH to that prefix before building. Unset locally, so
+// `npm run dev` and `npm start` keep serving from the domain root.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const nextConfig: NextConfig = {
+  // `next start` is the normal production path. Pages needs a folder of files
+  // instead, so the release build asks for the export explicitly rather than
+  // making it the only way this app can run.
+  output: process.env.NEXT_STATIC_EXPORT === "1" ? "export" : undefined,
+  basePath: basePath || undefined,
+  assetPrefix: basePath || undefined,
+
   // The motion layer is a one-shot imperative boot (Lenis + GSAP + ScrollTrigger).
   // StrictMode's development-only double-mount would boot it twice and duplicate
   // every scroll trigger; production behaves identically either way.

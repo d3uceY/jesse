@@ -1,0 +1,86 @@
+name: release
+
+# The site is published on a tag and on nothing else: pushes to main, PRs and
+# merges build nothing. To ship, bump a tag.
+#
+#   git tag v1.1.0
+#   git push origin v1.1.0
+#
+# One-time setup: Settings -> Pages -> Source must be "GitHub Actions".
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One Pages deployment at a time. Queue instead of cancelling, so a tag pushed
+# while another release is mid-flight still lands afterwards.
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # Project sites live under /<repo>/, user sites (d3ucey.github.io) at the
+      # root. Derive the prefix instead of hard-coding the repo name.
+      - name: Work out the Pages base path
+        run: |
+          repo="${GITHUB_REPOSITORY#*/}"
+          if [ "$repo" = "${GITHUB_REPOSITORY%%/*}.github.io" ]; then
+            echo "NEXT_PUBLIC_BASE_PATH=" >> "$GITHUB_ENV"
+          else
+            echo "NEXT_PUBLIC_BASE_PATH=/$repo" >> "$GITHUB_ENV"
+          fi
+
+      - name: Build static export
+        run: npm run build
+        env:
+          NEXT_STATIC_EXPORT: "1"
+
+      # basePath covers routes and chunks; this covers hand-written /assets/
+      # URLs in CSS, <img src> and the preloads.
+      - name: Prefix public asset URLs
+        run: node scripts/apply-base-path.mjs
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          # First run turns Pages on with "GitHub Actions" as the source instead
+          # of failing because the site was never enabled.
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    name: deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
