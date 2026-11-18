@@ -10,7 +10,7 @@ export default function About() {
 
       <div className="about__head grid">
         <h2 className="about__lede t-medium" data-reveal>
-          I&apos;m Jesse. I build software for the desktop and the terminal,
+          I&apos;m Jesse. I build software for the web, desktop and the terminal,
           usually because something I do every day is slower than it should be.
         </h2>
         <p className="about__word t-medium" aria-hidden="true">
@@ -35,25 +35,21 @@ export default function About() {
           <article className="about__block">
             <h3 className="t-medium">The pattern</h3>
             <p className="t-body">
-              Avnac exists because I wanted a design tool that opened in under a
-              second. Vectile exists because I wanted to search my own notes
-              without uploading them. Clipcat exists because I kept losing what I
-              had copied. Notice the friction, build the thing, use it the next
-              day.
+              Vectile exists because I wanted to find my own notes and PDFs without knowing its content.
+              Clipcat exists because I kept losing what I
+              had copied and Windows sucks a*s. My software exists to fix everyday annoyances.
             </p>
           </article>
           <article className="about__block">
-            <h3 className="t-medium">Go behind, TypeScript in front</h3>
+            <h3 className="t-medium">Go, Rust behind, TypeScript in front</h3>
             <p className="t-body">
-              Most of these are Wails apps. Go handles files, indexing and the
-              parts that touch the OS; the screen is TypeScript, or Elm when the
-              UI has enough state to deserve it. Rust turns up where a job has to
-              start fast and stay small.
+              I use Go and Rust and TypeScript for most of my backends and desktop applications.
+              Go when i need to build a desktop application or cli tool quickly. 
+              Rust when i need that sweet sweet performance and TypeScript for frontends mostly.
             </p>
           </article>
           <p className="about__statement" data-reveal>
-            Every app on this page is installed on my machine and opened most
-            days. Nothing here was built for a pitch deck.
+            Every app on this page is installed on my machine and used most days. The sprite assets you see in this site were generated with SpriteWare.
           </p>
         </div>
       </div>
