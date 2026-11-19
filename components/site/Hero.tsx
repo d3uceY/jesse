@@ -48,14 +48,14 @@ export default function Hero() {
   return (
     <section className="hero" id="top" data-section data-nav="ink">
       <h1 className="hero__title" data-hero-title>
-        d3ucey
+        d3uceY
       </h1>
 
       {/* The wordmark is the h1 for the design's sake; this is the sentence a
           crawler and a screen reader need first. Visually clipped, textually
           the page summary. */}
       <p className="sr-only">
-        Jesse (d3ucey) is an independent software developer who builds
+        Jesse (d3uceY) is an independent software developer who builds
         open-source desktop apps and command-line tools, including Avnac Studio,
         Vectile, Clipcat, SpriteWare and NooBoo.
       </p>

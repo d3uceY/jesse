@@ -12,7 +12,7 @@ export default function SiteHeader() {
     <header className="site-header" data-header>
       <div className="site-header__inner grid">
         <a className="site-header__brand" href="#top" data-nav-link>
-          d3ucey
+          d3uceY
         </a>
 
         <nav className="site-header__nav" aria-label="Sections">

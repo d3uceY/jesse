@@ -136,7 +136,7 @@ export default function PixelMorph() {
       next = takeNext();
       drawFrame(current);
       canvas.dataset.ready = "true";
-      window.dispatchEvent(new Event("d3ucey:intro-ready"));
+      window.dispatchEvent(new Event("d3uceY:intro-ready"));
 
       if (reduced) return;
       phaseStart = performance.now();

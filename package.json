@@ -23,5 +23,5 @@
     "eslint-config-next": "16.4.6",
     "typescript": "^5"
   },
-  "description": "d3ucey — portfolio for Jesse. Next.js App Router, GSAP scroll motion."
+  "description": "d3uceY — portfolio for Jesse. Next.js App Router, GSAP scroll motion."
 }

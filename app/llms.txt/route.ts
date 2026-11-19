@@ -13,9 +13,9 @@ export const dynamic = "force-static";
 export function GET() {
   const lines: string[] = [];
 
-  lines.push("# d3ucey — Jesse", "");
+  lines.push("# d3uceY — Jesse", "");
   lines.push(
-    "> Jesse (d3ucey) is an independent software developer who builds open-source desktop apps and command-line tools. This site is the index for fifteen of them.",
+    "> Jesse (d3uceY) is an independent software developer who builds open-source desktop apps and command-line tools. This site is the index for fifteen of them.",
     "",
   );
   lines.push(`- Site: ${SITE_URL}`);

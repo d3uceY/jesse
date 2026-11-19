@@ -31,7 +31,7 @@ const TO = `${base}/assets/`;
 // nest the prefix. Park the already-correct form, rewrite the bare one, then
 // put it back, so the pass is idempotent.
 const DONE = `${base}/assets/`;
-const PARK = "\u0000d3ucey-base-path\u0000";
+const PARK = "\u0000d3uceY-base-path\u0000";
 
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });

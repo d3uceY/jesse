@@ -22,7 +22,7 @@ export default function MotionBoot() {
         destroy = await boot();
       } catch (error) {
         // The page stays fully readable without JS; fail quietly.
-        console.error("[d3ucey] motion failed to start:", error);
+        console.error("[d3uceY] motion failed to start:", error);
         document.querySelector("[data-intro]")?.remove();
       }
       if (disposed) destroy?.();
