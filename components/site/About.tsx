@@ -14,8 +14,8 @@ export default function About() {
 
       <div className="about__head grid">
         <h2 className="about__lede t-medium" data-reveal>
-          I&apos;m Jesse. I build software for the web, desktop and the terminal,
-          usually because something I do every day is slower than it should be.
+          I build software for the web, desktop and the terminal, usually
+          because something I do every day is slower than it should be.
         </h2>
         <p className="about__word t-medium" aria-hidden="true">
           jesse

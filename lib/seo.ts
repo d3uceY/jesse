@@ -30,10 +30,10 @@ export function pageUrl(path = "/"): string {
 export const SITE_ORIGIN = ORIGIN;
 /** The page's own URL, with the trailing slash a directory index deserves. */
 export const SITE_URL = pageUrl("/");
-export const SITE_NAME = "d3uceY";
-export const SITE_TITLE = "d3uceY / Jesse, desktop, web apps & command-line tools";
+export const SITE_NAME = "Jesse";
+export const SITE_TITLE = "Jesse — desktop, web apps & command-line tools";
 export const SITE_DESCRIPTION =
-  "Jesse (d3uceY) builds open-source desktop apps and command-line tools — Avnac Studio, Vectile, Clipcat, SpriteWare, NooBoo. Fifteen tools, one developer.";
+  "Jesse builds open-source desktop apps and command-line tools — Avnac Studio, Vectile, Clipcat, SpriteWare, NooBoo. Fifteen tools, one developer.";
 export const SITE_KEYWORDS = [
   "d3uceY",
   "Jesse",
@@ -99,7 +99,7 @@ const PERSON = {
   image: pageUrl("/assets/media/jesse.webp"),
   jobTitle: "Independent software developer",
   description:
-    "Jesse builds open-source desktop apps and command-line tools under the handle d3uceY.",
+    "Jesse builds open-source desktop apps and command-line tools.",
   sameAs: [site.github, site.x],
   knowsAbout: [
     "Go",
@@ -156,8 +156,8 @@ export function buildJsonLd() {
         "@type": "WebSite",
         "@id": WEBSITE_ID,
         url: SITE_URL,
-        name: site.handle,
-        alternateName: `${site.name} — ${site.handle}`,
+        name: SITE_NAME,
+        alternateName: site.handle,
         description: SITE_DESCRIPTION,
         inLanguage: "en",
         publisher: { "@id": PERSON_ID },
@@ -186,8 +186,7 @@ export function buildJsonLd() {
         "@type": "ItemList",
         "@id": `${SITE_URL}#apps`,
         name: "Shipped apps",
-        description:
-          "Five installable, open-source desktop apps by Jesse (d3uceY).",
+        description: "Five installable, open-source desktop apps by Jesse.",
         numberOfItems: APPS.length,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: APPS.map((app) => ({
@@ -200,7 +199,7 @@ export function buildJsonLd() {
         "@type": "ItemList",
         "@id": `${SITE_URL}#shelf`,
         name: "The rest of the shelf",
-        description: "Smaller tools and experiments by Jesse (d3uceY).",
+        description: "Smaller tools and experiments by Jesse.",
         numberOfItems: SHELF_APPS.length,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: SHELF_APPS.map((item) => ({

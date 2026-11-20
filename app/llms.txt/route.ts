@@ -13,13 +13,13 @@ export const dynamic = "force-static";
 export function GET() {
   const lines: string[] = [];
 
-  lines.push("# d3uceY — Jesse", "");
+  lines.push("# Jesse", "");
   lines.push(
-    "> Jesse (d3uceY) is an independent software developer who builds open-source desktop apps and command-line tools. This site is the index for fifteen of them.",
+    "> Jesse is an independent software developer who builds open-source desktop apps and command-line tools. This site is the index for fifteen of them.",
     "",
   );
   lines.push(`- Site: ${SITE_URL}`);
-  lines.push(`- Author: ${site.name} (${site.handle})`);
+  lines.push(`- Author: ${site.name}`);
   lines.push(`- Email: ${site.email}`);
   lines.push(`- GitHub: ${site.github}`);
   lines.push(`- X: ${site.x} (${site.xHandle})`);

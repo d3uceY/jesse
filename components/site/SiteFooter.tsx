@@ -5,7 +5,7 @@ export default function SiteFooter() {
   return (
     <footer className="footer" data-section data-nav="paper">
       <div className="footer__top grid">
-        <p className="footer__brand">{site.handle}</p>
+        <p className="footer__brand">{site.name}</p>
 
         <nav className="footer__col" aria-label="Apps">
           <h2 className="footer__heading t-medium">
@@ -105,7 +105,7 @@ export default function SiteFooter() {
       </div>
 
       <div className="footer__bottom grid">
-        <p className="footer__fine">© 2026 {site.name} / d3uceY</p>
+        <p className="footer__fine">© 2026 {site.name}</p>
         <a className="footer__fine" href="#top" data-back-to-top>
           <Arrow dir="n" /> back to top
         </a>
